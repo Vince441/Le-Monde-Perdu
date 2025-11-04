@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: Le-Monde-Perdu
+  security:
+    user:
+      name: admin
+      password: admin
+
+  output:
+    ansi:
+      enabled: ALWAYS
+
+  jpa:
+    defer-datasource-initialization: false
+    hibernate:
+      ddl-auto: update   # update pour dev, validate ou none pour prod
+    properties:
+      hibernate:
+        default_schema: monde_perdu
+
+  config:
+    import: "secret.yml"
