@@ -6,6 +6,7 @@ import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.UserDto;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.UserRequestDto;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface UserDtoMapper {

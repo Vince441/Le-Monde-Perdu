@@ -38,7 +38,7 @@ public class ValidatorConfig {
 
     public static boolean isValidPseudo(String pseudo) {
         if (pseudo == null) return false;
-        if(!PASSWORD_PATTERN.matcher(pseudo).matches()) return false;
+        if(!PSEUDO_PATTERN.matcher(pseudo).matches()) return false;
         return !SQL_KEYWORDS.contains(pseudo.toUpperCase());
 
     }

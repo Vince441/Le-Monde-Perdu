@@ -6,6 +6,7 @@ import com.lemondeperdu.Le.Monde.Perdu.metier.exception.UserException;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.UserUseCase;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.UserPort;
+import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class UserService implements UserUseCase {
@@ -28,32 +29,14 @@ public class UserService implements UserUseCase {
     }
 
     @Override
-    public User updateUtilisateur(User user) {
-        verificationUpdateUser(user);
-        user.setPseudo(user.getPseudo());
-        user.setGenre(user.getGenre());
+    @Transactional
+    public User updateUtilisateur(String id, User userUpdate) {
 
-        user = userPort.updateUser(user);
-        return user;
+
+        return userPort.updateUser(id, userUpdate);
     }
 
-    private void verificationUpdateUser(User user) {
 
-        if( user.getPseudo() == null || user.getPseudo().isEmpty()){
-            throw  new UserException("Le pseudo n'est pas renseigné");
-        }
-
-        if( user.getGenre() == null || user.getGenre().isEmpty()){
-            throw  new UserException("Le genre n'est pas renseigné");
-        }
-
-        if(!ValidatorConfig.isValidPseudo(user.getPseudo())) {
-            throw new UserException(
-                    "Le pseudo n'est pas valide"
-            );
-        }
-
-    }
 
 
     private void verificationUser(User user) {

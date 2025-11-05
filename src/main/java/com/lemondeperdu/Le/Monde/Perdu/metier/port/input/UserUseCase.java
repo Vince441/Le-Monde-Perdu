@@ -6,5 +6,5 @@ import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 public interface UserUseCase {
     User creeUtilisateur(User user);
 
-    User updateUtilisateur(User user);
+    User updateUtilisateur(String id, User userUpdate);
 }

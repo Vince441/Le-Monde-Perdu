@@ -29,6 +29,6 @@ public class LoginService implements LoginUseCase {
         String token = TokenService.generateToken(user.getEmail());
 
         // Générer le token JWT
-        return new TokenDto(token, user.getEmail());
+        return new TokenDto(token, user.getEmail(), user.getIdUser());
     }
 }

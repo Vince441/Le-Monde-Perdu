@@ -11,5 +11,6 @@ public interface UserPort {
 
     Optional<User> findByEmail(String email);
 
-    User updateUser(User user);
+
+    User updateUser(String id, User userUpdate);
 }

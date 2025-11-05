@@ -40,13 +40,17 @@ public class UserController {
 
     @PatchMapping("/{id}/update")
     public ResponseEntity<UserDto> updateUser(
+            @PathVariable String id,
             @RequestBody UpdateUserDto updateUserDto) {
 
-        User updatedUser = userUseCase.updateUtilisateur(userDtoMapper.toModelUpdate(updateUserDto));
+        // mapstruct -> uniquement les champs modifiables
+        User userUpdate = userDtoMapper.toModelUpdate(updateUserDto);
+
+        // On passe l'id directement en paramètre du use case
+        User updatedUser = userUseCase.updateUtilisateur(id, userUpdate);
 
         return ResponseEntity.ok(userDtoMapper.toUserDto(updatedUser));
     }
-
 
 
 }

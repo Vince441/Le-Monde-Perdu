@@ -1,10 +1,7 @@
 package com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +19,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "uuid2")
+    @Column(name = "id_user")
     private String idUser;
 
     private String email;
