@@ -2,6 +2,7 @@ package com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.controller;
 
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.LoginRequestDto;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.TokenDto;
+import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.LoginUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<TokenDto> login(@RequestBody LoginRequestDto request) {
-        String token = loginUseCase.login(request.pseudo(), request.password());
-        return ResponseEntity.ok(new TokenDto(token));
+        TokenDto tokenDto = loginUseCase.login(request.email(), request.password());
+
+        return ResponseEntity.ok(tokenDto);
     }
 }

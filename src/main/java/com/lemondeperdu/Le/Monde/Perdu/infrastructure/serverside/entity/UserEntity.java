@@ -24,7 +24,11 @@ public class UserEntity {
     @GenericGenerator(name = "UUID", strategy = "uuid2")
     private String idUser;
 
+    private String email;
+
     private String pseudo;
+
+    private String genre;
 
     private String password;
 

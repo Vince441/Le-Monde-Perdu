@@ -11,4 +11,5 @@ public interface UserEntityMapper {
 
     User toModel (UserEntity userEntity);
 
+
 }

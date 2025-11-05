@@ -30,7 +30,15 @@ public class UserAdapter implements UserPort {
     }
 
     @Override
-    public Optional<User> findByPseudo(String pseudo) {
-        return userRepository.findByPseudo(pseudo).map(userEntityMapper::toModel);
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email).map(userEntityMapper::toModel);
+    }
+
+    @Override
+    public User updateUser(User user) {
+        UserEntity userEntity = userEntityMapper.toEntity(user);
+        UserEntity userUpdated = userRepository.save(userEntity);
+
+        return userEntityMapper.toModel(userUpdated);
     }
 }

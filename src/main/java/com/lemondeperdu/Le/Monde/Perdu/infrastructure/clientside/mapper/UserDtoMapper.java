@@ -1,6 +1,8 @@
 package com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.mapper;
 
+import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.UpdateUserDto;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.UserCreeDto;
+import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.UserDto;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.UserRequestDto;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import org.mapstruct.Mapper;
@@ -16,5 +18,7 @@ public interface UserDtoMapper {
 
     User toModelCree(UserCreeDto userCreeDto);
 
+    UserDto toUserDto(User user);
 
+    User toModelUpdate(UpdateUserDto updateUserDto);
 }

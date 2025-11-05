@@ -9,5 +9,7 @@ public interface UserPort {
 
     User creeUser(User user);
 
-    Optional<User> findByPseudo(String pseudo);
+    Optional<User> findByEmail(String email);
+
+    User updateUser(User user);
 }

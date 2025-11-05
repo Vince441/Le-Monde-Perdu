@@ -1,5 +1,6 @@
 package com.lemondeperdu.Le.Monde.Perdu.metier.service;
 
+import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.TokenDto;
 import com.lemondeperdu.Le.Monde.Perdu.metier.exception.UserException;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.LoginUseCase;
@@ -17,15 +18,17 @@ public class LoginService implements LoginUseCase {
     }
 
     @Override
-    public String login(String pseudo, String password) {
-        User user = userPort.findByPseudo(pseudo)
-                .orElseThrow(() -> new UserException("Pseudo ou mot de passe incorrect"));
+    public TokenDto login(String email, String password) {
+        User user = userPort.findByEmail(email)
+                .orElseThrow(() -> new UserException("L'email ou mot de passe incorrect"));
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new UserException("Pseudo ou mot de passe incorrect");
+            throw new UserException("L'email ou mot de passe incorrect");
         }
 
+        String token = TokenService.generateToken(user.getEmail());
+
         // Générer le token JWT
-        return TokenService.generateToken(user.getPseudo());
+        return new TokenDto(token, user.getEmail());
     }
 }
