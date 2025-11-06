@@ -1,7 +1,8 @@
 package com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto;
 
-public record UserCreeDto(
+public record UserDto(
         String idUser,
-        String email
-) {
-}
+        String email,
+        String pseudo,
+        String genre
+) {}

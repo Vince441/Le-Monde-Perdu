@@ -4,6 +4,7 @@ package com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.adapter;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.entity.UserEntity;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.mapper.UserEntityMapper;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.repository.UserRepository;
+import com.lemondeperdu.Le.Monde.Perdu.metier.exception.UserException;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.UserPort;
 import org.springframework.stereotype.Repository;
@@ -30,7 +31,34 @@ public class UserAdapter implements UserPort {
     }
 
     @Override
-    public Optional<User> findByPseudo(String pseudo) {
-        return userRepository.findByPseudo(pseudo).map(userEntityMapper::toModel);
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email).map(userEntityMapper::toModel);
+    }
+
+    @Override
+    public User updateUser(String id, User userUpdate) {
+
+        UserEntity userEntity = userRepository.findById(id)
+                .orElseThrow(() -> new UserException("Utilisateur non trouvé"));
+
+
+
+        if (userUpdate.getIdUser() != null) {
+            userEntity.setPseudo(userUpdate.getIdUser());
+        }
+        // Mise à jour uniquement des champs non nuls
+        if (userUpdate.getPseudo() != null) {
+            userEntity.setPseudo(userUpdate.getPseudo());
+        }
+
+        if (userUpdate.getGenre() != null) {
+            userEntity.setGenre(userUpdate.getGenre());
+        }
+
+        // Sauvegarde en BDD
+        UserEntity savedEntity = userRepository.save(userEntity);
+
+        // Remapping en modèle domaine
+        return userEntityMapper.toModel(savedEntity);
     }
 }

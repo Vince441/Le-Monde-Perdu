@@ -1,10 +1,12 @@
 package com.lemondeperdu.Le.Monde.Perdu.metier.service;
 
+import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.UpdateUserDto;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.configuration.ValidatorConfig;
 import com.lemondeperdu.Le.Monde.Perdu.metier.exception.UserException;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.UserUseCase;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.UserPort;
+import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class UserService implements UserUseCase {
@@ -26,17 +28,26 @@ public class UserService implements UserUseCase {
         return user;
     }
 
+    @Override
+    @Transactional
+    public User updateUtilisateur(String id, User userUpdate) {
+
+
+        return userPort.updateUser(id, userUpdate);
+    }
+
+
+
+
     private void verificationUser(User user) {
 
         // Vérification pseudo
-        if (user.getPseudo() == null || user.getPseudo().isEmpty()) {
-            throw new UserException("Le pseudo n'est pas renseigné.");
+        if (user.getEmail() == null || user.getEmail().isEmpty()) {
+            throw new UserException("L'email n'est pas renseigné.");
         }
-        if (!ValidatorConfig.isSafePseudo(user.getPseudo())) {
+        if (!ValidatorConfig.isSafeEmail(user.getEmail())) {
             throw new UserException(
-                    "Le pseudo n'est pas valide : " +
-                            "il doit faire 2 à 20 caractères, commencer et finir par une lettre ou un chiffre, " +
-                            "et ne pas contenir de mots réservés SQL."
+                    "L'email' n'est pas valide : "
             );
         }
 

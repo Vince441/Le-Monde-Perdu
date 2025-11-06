@@ -1,8 +1,7 @@
 package com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto;
 
-public record TokenDto(
-
-        String token,
-        UserDto userDto
+public record UpdateUserDto(
+        String pseudo,
+        String genre
 ) {
 }
