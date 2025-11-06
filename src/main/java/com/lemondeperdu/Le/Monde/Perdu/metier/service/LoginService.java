@@ -1,7 +1,7 @@
 package com.lemondeperdu.Le.Monde.Perdu.metier.service;
 
-import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.TokenDto;
 import com.lemondeperdu.Le.Monde.Perdu.metier.exception.UserException;
+import com.lemondeperdu.Le.Monde.Perdu.metier.model.Token;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.LoginUseCase;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.UserPort;
@@ -12,23 +12,28 @@ public class LoginService implements LoginUseCase {
     private final UserPort userPort;
     private final PasswordEncoder passwordEncoder;
 
+
     public LoginService(UserPort userPort, PasswordEncoder passwordEncoder) {
         this.userPort = userPort;
         this.passwordEncoder = passwordEncoder;
+
     }
 
     @Override
-    public TokenDto login(String email, String password) {
+    public Token login(String email, String password) {
         User user = userPort.findByEmail(email)
-                .orElseThrow(() -> new UserException("L'email ou mot de passe incorrect"));
+                .orElseThrow(() -> new UserException("Email ou mot de passe incorrect"));
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new UserException("L'email ou mot de passe incorrect");
+            throw new UserException("Email ou mot de passe incorrect");
         }
 
-        String token = TokenService.generateToken(user.getEmail());
+        String jwt = TokenService.generateToken(user.getEmail());
 
-        // Générer le token JWT
-        return new TokenDto(token, user.getEmail(), user.getIdUser());
+        // Crée le Token domaine (JWT + User) sans le stocker
+        return Token.builder()
+                .token(jwt)
+                .user(user)
+                .build();
     }
 }
