@@ -7,6 +7,6 @@ import lombok.Data;
 @Builder
 public class Periodes {
 
-    int id;
-    String perdiode;
+    Integer id;
+    String periode;
 }

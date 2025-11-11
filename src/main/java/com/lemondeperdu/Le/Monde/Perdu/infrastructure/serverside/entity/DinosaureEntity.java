@@ -24,17 +24,17 @@ public class DinosaureEntity {
     @Column(name = "id")
     String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "id_types")
     TypesEntity typesEntity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "id_periode")
     PeriodesEntity periodesEntity;
 
-    String tailles;
+    String taille;
 
-    String poids;
+    String poid;
 
     String description;
 

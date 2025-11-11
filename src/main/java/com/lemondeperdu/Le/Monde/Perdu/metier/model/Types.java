@@ -7,9 +7,9 @@ import lombok.Data;
 @Builder
 public class Types {
 
-    int id;
+    Integer id;
 
-    int type;
+    String type;
 
 
 

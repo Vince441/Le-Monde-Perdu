@@ -3,8 +3,6 @@ package com.lemondeperdu.Le.Monde.Perdu.metier.model;
 import lombok.Builder;
 import lombok.Data;
 
-import java.sql.Types;
-
 @Data
 @Builder
 public class Dinosaure {
@@ -15,19 +13,13 @@ public class Dinosaure {
 
     Periodes periodes;
 
-    String tailles;
+    String taille;
 
-    String poids;
+    String poid;
 
     String description;
 
     String url;
-
-
-
-
-
-
 
 
 }
