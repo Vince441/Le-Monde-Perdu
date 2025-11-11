@@ -34,7 +34,7 @@ public class GeneralConfiguration {
     }
 
     @Bean
-    DinoCodeUseCase dinoCodeUseCase(DinoCodesPort dinoCodesPort){
-        return new DinoCodeService(dinoCodesPort);
+    DinoCodeUseCase dinoCodeUseCase(DinoCodesPort dinoCodesPort, CodeGeneratorDinoConfiguration codeGeneratorDinoConfiguration){
+        return new DinoCodeService(dinoCodesPort, codeGeneratorDinoConfiguration);
     }
 }
