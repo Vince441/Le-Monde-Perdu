@@ -24,6 +24,8 @@ public class DinosaureEntity {
     @Column(name = "id")
     String id;
 
+    String nom;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "id_types")
     TypesEntity typesEntity;
@@ -40,5 +42,6 @@ public class DinosaureEntity {
 
     @Column(length = 500)
     String url;
+
 
 }

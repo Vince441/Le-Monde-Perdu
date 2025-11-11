@@ -4,4 +4,7 @@ import com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.entity.Dinosaur
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DinosaureRepository extends JpaRepository<DinosaureEntity, String > {
+
+
+
 }

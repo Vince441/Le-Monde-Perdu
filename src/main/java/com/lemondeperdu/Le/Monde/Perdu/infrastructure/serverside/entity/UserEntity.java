@@ -9,7 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 @Getter
 @Setter
 @NoArgsConstructor

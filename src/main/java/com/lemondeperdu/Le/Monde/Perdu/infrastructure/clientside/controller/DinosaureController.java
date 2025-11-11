@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Slf4j
 @RequestMapping("/dinosaures")
-public class DinosaureConroller {
+public class DinosaureController {
 
     private final DinosauresUseCase dinosauresUseCase;
     private final DinosaureDtoMapper dinosaureDtoMapper;
 
-    public DinosaureConroller(DinosauresUseCase dinosauresUseCase, DinosaureDtoMapper dinosaureDtoMapper) {
+    public DinosaureController(DinosauresUseCase dinosauresUseCase, DinosaureDtoMapper dinosaureDtoMapper) {
         this.dinosauresUseCase = dinosauresUseCase;
         this.dinosaureDtoMapper = dinosaureDtoMapper;
     }
