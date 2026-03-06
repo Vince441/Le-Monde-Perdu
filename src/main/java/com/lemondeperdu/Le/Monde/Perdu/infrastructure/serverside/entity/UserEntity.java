@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.List;
+
 @Entity
 @Table(name="users")
 @Getter
@@ -29,5 +31,6 @@ public class UserEntity {
     private String genre;
 
     private String password;
+
 
 }

@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Types;
+import java.util.List;
 
 @Entity
 @Table(name="dinosaures")

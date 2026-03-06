@@ -1,12 +1,16 @@
 package com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.controller;
 
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.Dinosaures.DinosaureDto;
+import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.Dinosaures.UtilisateurDinosauresRequestDto;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.mapper.DinosaureDtoMapper;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.Dinosaure;
+import com.lemondeperdu.Le.Monde.Perdu.metier.model.UtilisateurDinosaures;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.DinosauresUseCase;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @Slf4j

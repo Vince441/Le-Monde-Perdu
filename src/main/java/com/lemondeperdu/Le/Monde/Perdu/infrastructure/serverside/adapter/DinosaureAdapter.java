@@ -8,6 +8,7 @@ import com.lemondeperdu.Le.Monde.Perdu.metier.model.Dinosaure;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.DinosaurePort;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -26,4 +27,6 @@ public class DinosaureAdapter implements DinosaurePort {
     public Optional<Dinosaure> recupererDinosaure(String id) {
  return dinosaureRepository.findById(id).map(dinosaureEntityMapper::toModel);
     }
+
+
 }

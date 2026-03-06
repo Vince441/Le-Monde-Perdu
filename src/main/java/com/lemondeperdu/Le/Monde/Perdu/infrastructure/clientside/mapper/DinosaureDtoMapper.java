@@ -5,6 +5,8 @@ import com.lemondeperdu.Le.Monde.Perdu.metier.model.Dinosaure;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 
 @Mapper(componentModel = "spring")
 
