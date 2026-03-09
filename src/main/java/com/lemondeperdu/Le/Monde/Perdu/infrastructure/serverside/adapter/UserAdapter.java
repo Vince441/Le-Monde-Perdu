@@ -61,4 +61,9 @@ public class UserAdapter implements UserPort {
         // Remapping en modèle domaine
         return userEntityMapper.toModel(savedEntity);
     }
+
+    @Override
+    public Optional<User> recupererUtilisateur(String id) {
+        return userRepository.findById(id).map(userEntityMapper::toModel);
+    }
 }

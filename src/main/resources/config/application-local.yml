@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:postgresql://aws-1-eu-west-3.pooler.supabase.com:5432/postgres?sslmode=require
     username: postgres.rtzjskwflcedtsqzcgkf
-    password: admin12345F7yfaxe   # récupéré depuis secret.yml
+    password: ${PASSWORD}   # récupéré depuis secret.yml
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10   # < 15 pour laisser des connexions à DBeaver ou autres outils
