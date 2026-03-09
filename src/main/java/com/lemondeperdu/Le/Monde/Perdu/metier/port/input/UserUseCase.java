@@ -7,4 +7,6 @@ public interface UserUseCase {
     User creeUtilisateur(User user);
 
     User updateUtilisateur(String id, User userUpdate);
+
+    User recupererUtilisateur(String id);
 }

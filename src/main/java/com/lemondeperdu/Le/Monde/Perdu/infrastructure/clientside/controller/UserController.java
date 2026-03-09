@@ -52,5 +52,14 @@ public class UserController {
         return ResponseEntity.ok(userDtoMapper.toUserDto(updatedUser));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> getUser(@PathVariable String id) {
+
+        User user = userUseCase.recupererUtilisateur(id);
+
+        return ResponseEntity.ok(userDtoMapper.toUserDto(user));
+
+    }
+
 
 }

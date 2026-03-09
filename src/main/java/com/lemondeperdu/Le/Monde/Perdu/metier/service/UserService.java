@@ -36,7 +36,10 @@ public class UserService implements UserUseCase {
         return userPort.updateUser(id, userUpdate);
     }
 
-
+    @Override
+    public User recupererUtilisateur(String id) {
+        return userPort.recupererUtilisateur(id).orElseThrow(() -> new UserException("L'utilisateur est introuvable"));
+    }
 
 
     private void verificationUser(User user) {

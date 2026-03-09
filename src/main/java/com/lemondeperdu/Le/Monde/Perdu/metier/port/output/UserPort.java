@@ -13,4 +13,6 @@ public interface UserPort {
 
 
     User updateUser(String id, User userUpdate);
+
+    Optional<User> recupererUtilisateur(String id);
 }

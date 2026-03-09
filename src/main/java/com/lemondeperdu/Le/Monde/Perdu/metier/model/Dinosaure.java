@@ -9,6 +9,8 @@ public class Dinosaure {
 
     String id;
 
+    String nom;
+
     Types types;
 
     Periodes periodes;
@@ -21,7 +23,6 @@ public class Dinosaure {
 
     String url;
 
-    String idNewDinosaure;
 
 
 }

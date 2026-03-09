@@ -25,6 +25,7 @@ public class DinosaureEntity {
     @Column(name = "id")
     String id;
 
+    @Column(name = "nom")
     String nom;
 
     @ManyToOne(fetch = FetchType.EAGER)
