@@ -36,27 +36,26 @@ public class UserAdapter implements UserPort {
     }
 
     @Override
-    public User updateUser(String id, User userUpdate) {
+    public User updateCompteCreer(String id, User userUpdate) {
 
-        UserEntity userEntity = userRepository.findById(id)
-                .orElseThrow(() -> new UserException("Utilisateur non trouvé"));
+        UserEntity userTrouve = findByUserId(id);
 
 
 
         if (userUpdate.getIdUser() != null) {
-            userEntity.setPseudo(userUpdate.getIdUser());
+            userTrouve.setPseudo(userUpdate.getIdUser());
         }
         // Mise à jour uniquement des champs non nuls
         if (userUpdate.getPseudo() != null) {
-            userEntity.setPseudo(userUpdate.getPseudo());
+            userTrouve.setPseudo(userUpdate.getPseudo());
         }
 
         if (userUpdate.getGenre() != null) {
-            userEntity.setGenre(userUpdate.getGenre());
+            userTrouve.setGenre(userUpdate.getGenre());
         }
 
         // Sauvegarde en BDD
-        UserEntity savedEntity = userRepository.save(userEntity);
+        UserEntity savedEntity = userRepository.save(userTrouve);
 
         // Remapping en modèle domaine
         return userEntityMapper.toModel(savedEntity);
@@ -66,4 +65,40 @@ public class UserAdapter implements UserPort {
     public Optional<User> recupererUtilisateur(String id) {
         return userRepository.findById(id).map(userEntityMapper::toModel);
     }
+
+    @Override
+    public User updateUtilisateur(String id, User user) {
+
+
+        UserEntity userTrouve = findByUserId(id);
+
+
+        if (user.getIdUser() != null) {
+            userTrouve.setPseudo(userTrouve.getIdUser());
+        }
+        // Mise à jour uniquement des champs non nuls
+        if (user.getPseudo() != null) {
+            userTrouve.setPseudo(userTrouve.getPseudo());
+        }
+
+        if(user.getEmail() != null) {
+            userTrouve.setEmail(user.getEmail());
+        }
+
+        if (user.getGenre() != null) {
+            userTrouve.setGenre(userTrouve.getGenre());
+        }
+
+        // Sauvegarde en BDD
+        UserEntity savedEntity = userRepository.save(userTrouve);
+
+        // Remapping en modèle domaine
+        return userEntityMapper.toModel(savedEntity);
+    }
+
+    private UserEntity findByUserId(String id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserException("Utilisateur non trouvé"));
+    }
+
 }

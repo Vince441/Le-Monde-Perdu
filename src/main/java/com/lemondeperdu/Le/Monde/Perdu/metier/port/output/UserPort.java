@@ -12,7 +12,9 @@ public interface UserPort {
     Optional<User> findByEmail(String email);
 
 
-    User updateUser(String id, User userUpdate);
+    User updateCompteCreer(String id, User userUpdate);
 
     Optional<User> recupererUtilisateur(String id);
+
+    User updateUtilisateur(String id, User user);
 }

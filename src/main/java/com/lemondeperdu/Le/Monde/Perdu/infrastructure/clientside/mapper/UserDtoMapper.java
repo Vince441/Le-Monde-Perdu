@@ -22,4 +22,7 @@ public interface UserDtoMapper {
     UserDto toUserDto(User user);
 
     User toModelUpdate(UpdateUserDto updateUserDto);
+
+    User toModelUpdateDto(UserDto userDto);
+
 }

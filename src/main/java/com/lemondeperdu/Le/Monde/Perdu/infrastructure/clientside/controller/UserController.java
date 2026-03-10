@@ -38,8 +38,8 @@ public class UserController {
 
     }
 
-    @PatchMapping("/{id}/update")
-    public ResponseEntity<UserDto> updateUser(
+    @PatchMapping("/{id}/cree-compte")
+    public ResponseEntity<UserDto> updateCompteCreer(
             @PathVariable String id,
             @RequestBody UpdateUserDto updateUserDto) {
 
@@ -47,10 +47,20 @@ public class UserController {
         User userUpdate = userDtoMapper.toModelUpdate(updateUserDto);
 
         // On passe l'id directement en paramètre du use case
-        User updatedUser = userUseCase.updateUtilisateur(id, userUpdate);
+        User updatedUser = userUseCase.updateCompteCreer(id, userUpdate);
 
         return ResponseEntity.ok(userDtoMapper.toUserDto(updatedUser));
     }
+
+    @PatchMapping("{id}/updateUtilisateur")
+    public ResponseEntity<UserDto> updateUtilisateur(
+            @PathVariable String id,
+            @RequestBody UserDto userDto) {
+        User user = userDtoMapper.toModelUpdateDto(userDto);
+        User updateUtilisateur = userUseCase.updateUtilisateur(id, user);
+        return ResponseEntity.ok(userDtoMapper.toUserDto(updateUtilisateur));
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUser(@PathVariable String id) {

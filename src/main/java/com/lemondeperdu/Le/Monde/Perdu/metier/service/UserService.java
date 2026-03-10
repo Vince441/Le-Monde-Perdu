@@ -1,6 +1,5 @@
 package com.lemondeperdu.Le.Monde.Perdu.metier.service;
 
-import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.UpdateUserDto;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.configuration.ValidatorConfig;
 import com.lemondeperdu.Le.Monde.Perdu.metier.exception.UserException;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
@@ -30,10 +29,9 @@ public class UserService implements UserUseCase {
 
     @Override
     @Transactional
-    public User updateUtilisateur(String id, User userUpdate) {
-
-
-        return userPort.updateUser(id, userUpdate);
+    public User updateCompteCreer(String id, User userUpdate) {
+        verificationCreerUser(userUpdate);
+        return userPort.updateCompteCreer(id, userUpdate);
     }
 
     @Override
@@ -41,10 +39,14 @@ public class UserService implements UserUseCase {
         return userPort.recupererUtilisateur(id).orElseThrow(() -> new UserException("L'utilisateur est introuvable"));
     }
 
+    @Override
+    public User updateUtilisateur(String id, User user) {
+        verificationUpdateUser(user);
+        return userPort.updateUtilisateur(id, user);
+    }
+
 
     private void verificationUser(User user) {
-
-        // Vérification pseudo
         if (user.getEmail() == null || user.getEmail().isEmpty()) {
             throw new UserException("L'email n'est pas renseigné.");
         }
@@ -53,8 +55,6 @@ public class UserService implements UserUseCase {
                     "L'email' n'est pas valide : "
             );
         }
-
-        // Vérification mot de passe
         if (user.getPassword() == null || user.getPassword().isEmpty()) {
             throw new UserException("Le mot de passe n'est pas renseigné.");
         }
@@ -66,4 +66,26 @@ public class UserService implements UserUseCase {
             );
         }
     }
+
+    private void verificationCreerUser(User userUpdate){
+        if (userUpdate.getEmail() != null) {
+            throw new UserException("L'email n'est pas valide : " + userUpdate.getEmail());
+        }
+        if (userUpdate.getPseudo() == null || userUpdate.getPseudo().isEmpty()) {
+            throw new UserException("Le pseudo n'est pas valide." + userUpdate.getPseudo());
+        }
+    }
+
+    private void verificationUpdateUser(User user){
+        if (user.getEmail() == null) {
+            throw new UserException("L'email n'est pas valide : ");
+        }
+        if (user.getPseudo() == null || user.getPseudo().isEmpty()) {
+            throw new UserException("Le pseudo n'est pas valide." + user.getPseudo());
+        }
+    }
+
+
+
+
 }
