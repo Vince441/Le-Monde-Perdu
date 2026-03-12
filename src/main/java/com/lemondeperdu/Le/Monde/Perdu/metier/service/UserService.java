@@ -30,7 +30,7 @@ public class UserService implements UserUseCase {
     @Override
     @Transactional
     public User updateCompteCreer(String id, User userUpdate) {
-        verificationCreerUser(userUpdate);
+//        verificationCreerUser(userUpdate);
         return userPort.updateCompteCreer(id, userUpdate);
     }
 
@@ -67,14 +67,14 @@ public class UserService implements UserUseCase {
         }
     }
 
-    private void verificationCreerUser(User userUpdate){
-        if (userUpdate.getEmail() != null) {
-            throw new UserException("L'email n'est pas valide : " + userUpdate.getEmail());
-        }
-        if (userUpdate.getPseudo() == null || userUpdate.getPseudo().isEmpty()) {
-            throw new UserException("Le pseudo n'est pas valide." + userUpdate.getPseudo());
-        }
-    }
+//    private void verificationCreerUser(User userUpdate){
+//        if (userUpdate.getEmail() != null) {
+//            throw new UserException("L'email n'est pas valide : " + userUpdate.getEmail());
+//        }
+//        if (userUpdate.getPseudo() == null || userUpdate.getPseudo().isEmpty()) {
+//            throw new UserException("Le pseudo n'est pas valide." + userUpdate.getPseudo());
+//        }
+//    }
 
     private void verificationUpdateUser(User user){
         if (user.getEmail() == null) {

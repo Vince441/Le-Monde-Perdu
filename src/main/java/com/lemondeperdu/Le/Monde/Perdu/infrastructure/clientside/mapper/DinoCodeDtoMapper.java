@@ -9,15 +9,13 @@ import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {DinosaureDtoMapper.class})
 public interface DinoCodeDtoMapper {
 
     @Mapping(target="dinosaure", expression = "java(toDinosaure(dinoCodeRequestDto.idDinosaure()))")
-    @Mapping(target="usedBy", expression ="java(toUsedBy(dinoCodeRequestDto.idUser()))")
     DinoCodes toModel (DinoCodeRequestDto dinoCodeRequestDto);
 
-    @Mapping(target="idDinosaure", source="dinosaure.id")
-    @Mapping(target="idUser", source="usedBy.idUser")
+    @Mapping(target="dinosaure", source="dinosaure")
     DinoCodeResponseDto toDto (DinoCodes dinoCodes);
 
 

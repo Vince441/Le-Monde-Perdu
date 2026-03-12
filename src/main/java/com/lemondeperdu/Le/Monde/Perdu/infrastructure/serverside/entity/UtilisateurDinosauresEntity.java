@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -17,6 +15,7 @@ import java.util.List;
 public class UtilisateurDinosauresEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -26,6 +25,4 @@ public class UtilisateurDinosauresEntity {
     @ManyToOne
     @JoinColumn(name="id_dino")
     private DinosaureEntity dinosaures;
-
-
 }

@@ -42,16 +42,8 @@ public class DinoCodesAdapter implements DinoCodesPort {
                 .orElseThrow(() -> new RuntimeException("Dinosaure non trouvé"));
 
 
-        User user = userRepository.findById(dinoCodes.getUsedBy().getIdUser())
-                .map(userEntityMapper::toModel)
-                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
-
-
-
-
         dinoCodes.setCode(dinoCodes.getCode());
         dinoCodes.setDinosaure(dino);
-        dinoCodes.setUsedBy(user);
 
 
 

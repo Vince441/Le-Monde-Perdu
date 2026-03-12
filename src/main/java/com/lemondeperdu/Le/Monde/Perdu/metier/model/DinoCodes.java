@@ -13,8 +13,6 @@ public class DinoCodes {
 
     private Dinosaure dinosaure;
 
-    private User usedBy;
-
     private LocalDateTime usedAt;
 
 }
