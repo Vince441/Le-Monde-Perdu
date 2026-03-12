@@ -18,4 +18,9 @@ public class UtilisateurDinosaureService implements UtilisateurDinosaureUseCase 
     public List<UtilisateurDinosaures> recupererToutLesDinosauresByIdUser(String idUser) {
         return utilisateurDinosauresPort.recupererToutLesDinosauresParIdUser(idUser);
     }
+
+    @Override
+    public UtilisateurDinosaures ajouterDinosaureInUtilisateurDinosaure(String code, String idUser) {
+        return utilisateurDinosauresPort.ajouterDinosaureInUtilisateurDinosaure(code, idUser);
+    }
 }

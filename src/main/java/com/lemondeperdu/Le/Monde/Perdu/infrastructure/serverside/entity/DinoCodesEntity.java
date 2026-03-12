@@ -24,10 +24,6 @@ public class DinoCodesEntity {
     @JoinColumn(name="dinosaure_id")
     DinosaureEntity dinosaureEntity;
 
-    @OneToOne
-    @JoinColumn(name="used_by")
-    UserEntity userEntity;
-
     @JoinColumn(name="used_at")
     private LocalDateTime usedAt;
 

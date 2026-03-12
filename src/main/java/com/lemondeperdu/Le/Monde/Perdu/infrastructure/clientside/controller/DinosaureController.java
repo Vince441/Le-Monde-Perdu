@@ -7,6 +7,7 @@ import com.lemondeperdu.Le.Monde.Perdu.metier.model.Dinosaure;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.UtilisateurDinosaures;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.DinosauresUseCase;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

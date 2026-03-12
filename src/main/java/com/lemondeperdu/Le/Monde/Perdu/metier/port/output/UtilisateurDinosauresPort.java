@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface UtilisateurDinosauresPort {
     List<UtilisateurDinosaures> recupererToutLesDinosauresParIdUser(String idUser);
+
+    UtilisateurDinosaures ajouterDinosaureInUtilisateurDinosaure(String code, String idUser);
 }

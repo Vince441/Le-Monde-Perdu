@@ -45,5 +45,7 @@ public class DinosaureEntity {
     @Column(length = 500)
     String url;
 
+    String code;
+
 
 }

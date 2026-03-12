@@ -4,8 +4,7 @@ import java.time.LocalDateTime;
 
 public record DinoCodeResponseDto(
         String code,
-        String idDinosaure,
-        String idUser,
+        DinosaureDto dinosaure,
         LocalDateTime usedAt
 ) {
 }

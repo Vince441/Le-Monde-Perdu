@@ -6,11 +6,9 @@ import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.mapper.Utilisat
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.UtilisateurDinosaures;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.UtilisateurDinosaureUseCase;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,5 +35,12 @@ private final UtilisateurDinosaureUseCase utilisateurDinosaureUseCase;
 
         return ResponseEntity.ok(utilisateurDinosaureResponseDtos);
 
+    }
+
+    @PostMapping()
+    public ResponseEntity<UtilisateurDinosaureResponseDto> createUtilisateurDinosauresWithCode(
+             @RequestParam String code, String idUser ){
+        UtilisateurDinosaures utilisateurDinosaures = utilisateurDinosaureUseCase.ajouterDinosaureInUtilisateurDinosaure(code, idUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(utilisateurDinosaureDtoMapper.toDto(utilisateurDinosaures));
     }
 }
