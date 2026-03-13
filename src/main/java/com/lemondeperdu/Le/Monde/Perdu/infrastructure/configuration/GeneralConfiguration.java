@@ -1,10 +1,7 @@
 package com.lemondeperdu.Le.Monde.Perdu.infrastructure.configuration;
 
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.*;
-import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.DinoCodesPort;
-import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.DinosaurePort;
-import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.UserPort;
-import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.UtilisateurDinosauresPort;
+import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.*;
 import com.lemondeperdu.Le.Monde.Perdu.metier.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,5 +34,10 @@ public class GeneralConfiguration {
     @Bean
     UtilisateurDinosaureUseCase utilisateurDinosaureUseCase(UtilisateurDinosauresPort utilisateurDinosauresPort){
         return new UtilisateurDinosaureService(utilisateurDinosauresPort);
+    }
+
+    @Bean
+    DinoStatUseCase dinoStatUseCase(DinoStatPort dinoStatPort){
+        return new DinoStatService(dinoStatPort);
     }
 }

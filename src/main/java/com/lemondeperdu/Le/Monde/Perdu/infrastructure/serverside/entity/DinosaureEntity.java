@@ -1,6 +1,5 @@
 package com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.entity;
 
-import com.lemondeperdu.Le.Monde.Perdu.metier.model.Periodes;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,8 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.sql.Types;
-import java.util.List;
 
 @Entity
 @Table(name="dinosaures")
