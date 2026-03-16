@@ -9,7 +9,6 @@ import com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.repository.Dino
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.repository.UserRepository;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.DinoCodes;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.Dinosaure;
-import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.DinoCodesPort;
 import org.springframework.stereotype.Repository;
 
@@ -21,17 +20,13 @@ public class DinoCodesAdapter implements DinoCodesPort {
     private final DinoCodesRepository dinoCodesRepository;
     private final DinoCodesEntityMapper dinoCodesEntityMapper;
     private final DinosaureEntityMapper dinosaureEntityMapper;
-    private final UserEntityMapper userEntityMapper;
     private final DinosaureRepository dinosaureRepository;
-    private final UserRepository userRepository;
 
     public DinoCodesAdapter(DinoCodesRepository dinoCodesRepository, DinoCodesEntityMapper dinoCodesEntityMapper, DinosaureEntityMapper dinosaureEntityMapper, UserEntityMapper userEntityMapper, DinosaureRepository dinosaureRepository, UserRepository userRepository) {
         this.dinoCodesRepository = dinoCodesRepository;
         this.dinoCodesEntityMapper = dinoCodesEntityMapper;
         this.dinosaureEntityMapper = dinosaureEntityMapper;
-        this.userEntityMapper = userEntityMapper;
         this.dinosaureRepository = dinosaureRepository;
-        this.userRepository = userRepository;
     }
 
 
