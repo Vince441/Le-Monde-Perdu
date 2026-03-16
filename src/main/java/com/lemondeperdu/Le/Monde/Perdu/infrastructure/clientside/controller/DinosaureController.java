@@ -38,6 +38,14 @@ public class DinosaureController {
 
     }
 
+    @PostMapping()
+    public ResponseEntity<DinosaureDto> postDino(
+            @RequestBody DinosaureDto dinosaureDto){
+            Dinosaure dinosaure = dinosauresUseCase.postDinosaure(dinosaureDtoMapper.toModel(dinosaureDto));
+            return ResponseEntity.status(HttpStatus.CREATED).body(dinosaureDtoMapper.toDto(dinosaure));
+    }
+
+
 
 
 

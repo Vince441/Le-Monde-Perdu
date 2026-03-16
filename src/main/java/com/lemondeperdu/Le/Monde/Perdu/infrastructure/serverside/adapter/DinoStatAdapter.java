@@ -24,12 +24,6 @@ public class DinoStatAdapter implements DinoStatPort {
     public Optional<DinoStat> recupererStatByIdDino(String idDino) {
         Optional<DinoStatEntity> entityOpt = dinoStatRepository.findByDinosaure_Id(idDino);
 
-        entityOpt.ifPresent(e -> System.out.println("Entity chanceCritique: " + e.getChanceCritique()));
-
-        Optional<DinoStat> modelOpt = entityOpt.map(dinoStatEntityMapper::toModel);
-
-        modelOpt.ifPresent(m -> System.out.println("Model chanceCritique: " + m.getChanceCritique()));
-
-        return modelOpt;
+        return entityOpt.map(dinoStatEntityMapper::toModel);
     }
 }

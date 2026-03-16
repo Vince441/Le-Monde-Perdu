@@ -13,12 +13,14 @@ public interface UserDtoMapper {
 
     UserRequestDto toDto(User user);
 
-    User toModel (UserRequestDto userRequestDto);
+    User toModel(UserRequestDto userRequestDto);
+
 
     UserCreeDto toDtoCree(User user);
 
     User toModelCree(UserCreeDto userCreeDto);
 
+    @Mapping(target = "role", source = "role")
     UserDto toUserDto(User user);
 
     User toModelUpdate(UpdateUserDto updateUserDto);

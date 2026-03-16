@@ -23,6 +23,6 @@ public class Dinosaure {
 
     String url;
 
-
+    String code;
 
 }

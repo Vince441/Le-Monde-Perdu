@@ -1,5 +1,6 @@
 package com.lemondeperdu.Le.Monde.Perdu.metier.service;
 
+import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.Dinosaures.DinosaureDto;
 import com.lemondeperdu.Le.Monde.Perdu.metier.exception.DinosaureException;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.Dinosaure;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.UtilisateurDinosaures;
@@ -22,5 +23,11 @@ public class DinosauresService implements DinosauresUseCase {
         return dinosaurePort.recupererDinosaure(id).orElseThrow(() -> new DinosaureException("Dinosaure non trouvé"));
 
     }
+
+    @Override
+    public Dinosaure postDinosaure(Dinosaure dinosaure) {
+        return dinosaurePort.postDinosaure(dinosaure);
+    }
+
 
 }

@@ -12,5 +12,6 @@ public class User {
     private String pseudo;
     private String password;
     private String genre;
+    private Role role;
 
 }

@@ -9,8 +9,10 @@ import org.mapstruct.Mapping;
 public interface UserEntityMapper {
 
     @Mapping(target = "idUser", source = "idUser")
+    @Mapping(target = "role", source = "role")
     User toModel(UserEntity entity);
 
     @Mapping(target = "idUser", source = "idUser")
+    @Mapping(target = "role", source = "role")
     UserEntity toEntity(User user);
 }

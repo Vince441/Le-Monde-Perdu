@@ -1,6 +1,7 @@
 package com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.entity;
 
 
+import com.lemondeperdu.Le.Monde.Perdu.metier.model.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,10 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.List;
-
 @Entity
-@Table(name="users")
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -31,6 +30,10 @@ public class UserEntity {
     private String genre;
 
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
 
 
 }
