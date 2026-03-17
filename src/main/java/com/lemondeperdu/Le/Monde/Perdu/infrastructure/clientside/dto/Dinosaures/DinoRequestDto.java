@@ -1,15 +1,13 @@
 package com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.Dinosaures;
 
-public record DinosaureDto(
-        String id,
+public record DinoRequestDto(
         String nom,
-        PeriodesDto periodes,
-        TypesDto types,
+        Integer periodes,
+        Integer types,
         String taille,
         String poid,
         String description,
         String url,
-        String code,
-        String role
+        String code
 ) {
 }

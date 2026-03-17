@@ -1,7 +1,8 @@
 package com.lemondeperdu.Le.Monde.Perdu.metier.port.input;
 
-import com.lemondeperdu.Le.Monde.Perdu.infrastructure.clientside.dto.Dinosaures.DinosaureDto;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.Dinosaure;
+import com.lemondeperdu.Le.Monde.Perdu.metier.model.Periodes;
+import com.lemondeperdu.Le.Monde.Perdu.metier.model.Types;
 
 import java.util.List;
 
@@ -12,4 +13,13 @@ public interface DinosauresUseCase {
 
 
     Dinosaure postDinosaure(Dinosaure dinosaure);
+
+
+    List<Types> getTypesDinosaures();
+
+    List<Periodes> getPeriodesDinosaures();
+
+    List<Types> getTypeDinosaure();
+
+    List<Periodes> getPeriodeDinosaure();
 }
