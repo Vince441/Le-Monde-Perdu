@@ -9,7 +9,5 @@ public record DinosaureDto(
         String poid,
         String description,
         String url,
-        String code,
-        String role
-) {
+        String code) {
 }
