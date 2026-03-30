@@ -2,6 +2,10 @@ spring:
   application:
     name: Le-Monde-Perdu
   security:
+    jwt:
+      secret : ${SECRET}
+      expiration : ${EXPIRATION}
+
     user:
       name: admin
       password: admin

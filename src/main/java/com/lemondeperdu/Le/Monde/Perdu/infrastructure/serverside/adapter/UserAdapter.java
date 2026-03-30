@@ -5,6 +5,7 @@ import com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.entity.UserEnti
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.mapper.UserEntityMapper;
 import com.lemondeperdu.Le.Monde.Perdu.infrastructure.serverside.repository.UserRepository;
 import com.lemondeperdu.Le.Monde.Perdu.metier.exception.UserException;
+import com.lemondeperdu.Le.Monde.Perdu.metier.model.Role;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.User;
 import com.lemondeperdu.Le.Monde.Perdu.metier.port.output.UserPort;
 import org.springframework.stereotype.Repository;
@@ -25,6 +26,7 @@ public class UserAdapter implements UserPort {
     @Override
     public User creeUser(User user) {
         UserEntity userEntity = userEntityMapper.toEntity(user);
+        userEntity.setRole(Role.USER);
         UserEntity userSaved = userRepository.save(userEntity);
 
         return userEntityMapper.toModel(userSaved);

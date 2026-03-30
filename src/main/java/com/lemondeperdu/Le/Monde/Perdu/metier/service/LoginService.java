@@ -11,12 +11,13 @@ public class LoginService implements LoginUseCase {
 
     private final UserPort userPort;
     private final PasswordEncoder passwordEncoder;
+    private final TokenService tokenService;
 
 
-    public LoginService(UserPort userPort, PasswordEncoder passwordEncoder) {
+    public LoginService(UserPort userPort, PasswordEncoder passwordEncoder, TokenService tokenService) {
         this.userPort = userPort;
         this.passwordEncoder = passwordEncoder;
-
+        this.tokenService = tokenService;
     }
 
     @Override
@@ -28,7 +29,7 @@ public class LoginService implements LoginUseCase {
             throw new UserException("Email ou mot de passe incorrect");
         }
 
-        String jwt = TokenService.generateToken(user.getEmail());
+        String jwt = tokenService.generateToken(user.getEmail());
 
         // Crée le Token domaine (JWT + User) sans le stocker
         return Token.builder()

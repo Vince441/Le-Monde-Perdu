@@ -14,6 +14,7 @@ import com.lemondeperdu.Le.Monde.Perdu.metier.port.input.DinosauresUseCase;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,6 +44,7 @@ public class DinosaureController {
         return ResponseEntity.ok(dinosaureDtoMapper.toDto(dinosaure));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
     public ResponseEntity<DinosaureDto> postDino(
             @RequestBody DinoRequestDto dinoRequestDto) {

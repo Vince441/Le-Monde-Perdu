@@ -1,5 +1,6 @@
 package com.lemondeperdu.Le.Monde.Perdu.metier.service;
 
+import com.lemondeperdu.Le.Monde.Perdu.infrastructure.configuration.CodeGeneratorDinoConfiguration;
 import com.lemondeperdu.Le.Monde.Perdu.metier.exception.DinosaureException;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.Dinosaure;
 import com.lemondeperdu.Le.Monde.Perdu.metier.model.Periodes;
@@ -12,9 +13,11 @@ import java.util.List;
 public class DinosauresService implements DinosauresUseCase {
 
     private final DinosaurePort dinosaurePort;
+    private final CodeGeneratorDinoConfiguration codeGeneratorDinoConfiguration;
 
-    public DinosauresService(DinosaurePort dinosaurePort) {
+    public DinosauresService(DinosaurePort dinosaurePort, CodeGeneratorDinoConfiguration codeGeneratorDinoConfiguration) {
         this.dinosaurePort = dinosaurePort;
+        this.codeGeneratorDinoConfiguration = codeGeneratorDinoConfiguration;
     }
 
 
@@ -26,6 +29,7 @@ public class DinosauresService implements DinosauresUseCase {
 
     @Override
     public Dinosaure postDinosaure(Dinosaure dinosaure) {
+        dinosaure.setCode(codeGeneratorDinoConfiguration.generateCode(dinosaure.getCode()));
         return dinosaurePort.postDinosaure(dinosaure);
     }
 

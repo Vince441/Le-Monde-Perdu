@@ -7,7 +7,6 @@ public record DinoRequestDto(
         String taille,
         String poid,
         String description,
-        String url,
-        String code
+        String url
 ) {
 }
